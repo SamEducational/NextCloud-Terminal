@@ -3,6 +3,7 @@ from rich.table import Table
 from rich.console import Console
 from rich.theme import Theme
 
+
 custom_theme = Theme({"success": "green"})
 
 console = Console(theme=custom_theme)
@@ -35,6 +36,7 @@ class Command:
 	def getMenu(self):
 		return self.table
 
+
 	def createMenu(self):
 		self.table = Table(title="Please select an option:")
 		self.table.add_column("Key")
@@ -50,18 +52,20 @@ class Command:
 		self.table.add_row("9.", "List Users")
 		self.table.add_row("X.", "Exit Program")
 
+
 	def createFolder(self):
 		print('\nYou entered "Create a Folder"\n')
 		folder_name = input("Enter the name of the folder: ")
 		self.nxc.create_folder(folder_name)
-		console.print("You created a Folder",style="success")
+		console.print("You created a Folder\n",style="success")
+
 
 	def uploadFile(self):
 		print('\nYou entered "Upload a File"\n')
 		local_file = input("Enter path of the file/folder on local storage: ")
 		online_file = input("Enter path for the file in nextCloud: ")
 		self.nxc.upload_file(local_file, online_file, timestamp=None)
-		console.print("You uploaded a Folder",style="success")
+		console.print("You uploaded a Folder\n",style="success")
 
 
 	def copyFile(self):
@@ -69,28 +73,28 @@ class Command:
 		copied_file = input("Enter the file/folder to copy: ")
 		destination = input("Enter the destination for the copy: ")
 		self.nxc.copy_path(copied_file, destination, overwrite=False)
-		console.print("You copied a File/Folder to destination",style="success")
+		console.print("You copied a File/Folder to destination\n",style="success")
 
 
 	def deleteFile(self):
 		print('\nYou entered "Delete a File/Folder"\n')
 		deleted_file = input("Enter the file/folder you want to delete: ")
 		self.nxc.delete_path(deleted_file)
-		console.print("You deleted a File/Folder",style="success")
+		console.print("You deleted a File/Folder\n",style="success")
 
 
 	def downloadFile(self):
 		print('\nYou entered "Download a File/Folder"\n')
 		downloaded_file = input("Enter path of the file/folder you want to download: ")
 		self.nxc.download_file(downloaded_file)
-		console.print("You dowloaded a File/Folder",style="success")
+		console.print("You dowloaded a File/Folder\n",style="success")
 
 
 	def setFavorite(self):
 		print('\nYou entered "Set Favorite File/Folder"\n')
 		favorited_file = input("Enter path of the file you want to favorite: ")
 		self.nxc.set_favorites(favorited_file)
-		console.print("You set a favorite File/Folder",style="success")
+		console.print("You set a favorite File/Folder\n",style="success")
 
 		# TODO: Parse json
 		#print("Your favorites:\n")
@@ -102,7 +106,7 @@ class Command:
 		moved_file = input("Enter path for the file you wish to move: ")
 		new_location = input("Enter new path for the file: ")
 		self.nxc.move_path(moved_file, new_location, overwrite=False)
-		console.print("You moved a File/Folder",style="success")
+		console.print("You moved a File/Folder\n",style="success")
 
 
 	def editUser(self):
@@ -126,4 +130,4 @@ class Command:
 			else:
 				new_response += x
 
-		return new_response
+		console.print(new_response + "\n")
