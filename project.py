@@ -2,6 +2,8 @@ import sys
 from os.path import dirname
 from os.path import join
 from command import Command
+from getpass import getpass
+from rich.console import Console
 
 
 sys.path.insert(0, join(dirname(__file__), 'src'))
@@ -9,11 +11,13 @@ sys.path.insert(0, join(dirname(__file__), 'src'))
 
 def main():
 
+    console = Console()
     print("Please log in to your NextCloud account: ")
     NEXTCLOUD_USERNAME = input("Username: ")
-    NEXTCLOUD_PASSWORD = input("Password: ")
+    NEXTCLOUD_PASSWORD = getpass("Password: ")
 
     INSTANCE = Command(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD)
+    INSTANCE.createMenu()
 
 
     loggedIn = True
@@ -24,7 +28,7 @@ def main():
 
 
     while loggedIn:
-        print(INSTANCE.getMenu())
+        console.print(INSTANCE.getMenu())
         currInput = input("Enter your command: ")
 
         match currInput.upper():
