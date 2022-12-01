@@ -27,6 +27,10 @@ def main():
     NEXTCLOUD_PASSWORD = getpass("Password: ")
 
     INSTANCE = Command(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD)
+    if INSTANCE.getConnectionIssues():
+        print("ERROR: There was an issue when logging in.")
+        exit()
+
     INSTANCE.createMenu()
 
 
