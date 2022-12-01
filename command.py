@@ -34,7 +34,7 @@ class Command:
 
 	def getConnectionIssues(self):
 		return self.nxc.get_connection_issues()
-		
+
 	def getMenu(self):
 		return self.table
 
