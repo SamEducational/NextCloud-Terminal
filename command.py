@@ -67,7 +67,7 @@ class Command:
 		local_file = input("Enter path of the file/folder on local storage: ")
 		online_file = input("Enter path for the file in nextCloud: ")
 		self.nxc.upload_file(local_file, online_file, timestamp=None)
-		console.print("You uploaded a Folder\n",style="success")
+		console.print("You uploaded a File/Folder\n",style="success")
 
 
 	def copyFile(self):
